@@ -1,6 +1,6 @@
 package br.com.casadosandaimes.casadosandaimes.cliente.application.api;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -23,7 +23,7 @@ public class ClienteRequest {
 	private String telefone;
 	private Sexo sexo;
 	@NotNull
-	private LocalDateTime dataNascimento;
+	private LocalDate dataNascimento;
 	@CPF
 	private String cpf;
 	@NotNull

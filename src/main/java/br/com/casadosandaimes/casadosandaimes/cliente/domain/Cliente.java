@@ -1,5 +1,6 @@
 package br.com.casadosandaimes.casadosandaimes.cliente.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -36,7 +37,7 @@ public class Cliente {
 	private String telefone;
 	private Sexo sexo;
 	@NotNull
-	private LocalDateTime dataNascimento;
+	private LocalDate dataNascimento;
 	@CPF
 	private String cpf;
 	@NotNull
@@ -46,7 +47,7 @@ public class Cliente {
 	private LocalDateTime dataHoraUltimaAlteracao;
 	
 	public Cliente(@NotBlank String nomeCompleto, @NotBlank @Email String email, @NotBlank String celular,
-			String telefone, Sexo sexo, @NotNull LocalDateTime dataNascimento, @CPF String cpf,
+			String telefone, Sexo sexo, @NotNull @NotNull LocalDate dataNascimento, @CPF String cpf,
 			@NotNull Boolean aceitaTermos) {
 		this.nomeCompleto = nomeCompleto;
 		this.email = email;
