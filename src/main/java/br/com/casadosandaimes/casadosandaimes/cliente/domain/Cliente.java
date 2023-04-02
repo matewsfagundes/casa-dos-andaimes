@@ -1,7 +1,13 @@
 package br.com.casadosandaimes.casadosandaimes.cliente.domain;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -9,10 +15,16 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Getter
+@Entity
 public class Cliente {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
 	@NotBlank
 	private String nomeCompleto;
 	@NotBlank
@@ -31,4 +43,18 @@ public class Cliente {
 	
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraUltimaAlteracao;
+	
+	public Cliente(@NotBlank String nomeCompleto, @NotBlank @Email String email, @NotBlank String celular,
+			String telefone, Sexo sexo, @NotNull LocalDateTime dataNascimento, @CPF String cpf,
+			@NotNull Boolean aceitaTermos) {
+		this.nomeCompleto = nomeCompleto;
+		this.email = email;
+		this.celular = celular;
+		this.telefone = telefone;
+		this.sexo = sexo;
+		this.dataNascimento = dataNascimento;
+		this.cpf = cpf;
+		this.aceitaTermos = aceitaTermos;
+		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
 }
